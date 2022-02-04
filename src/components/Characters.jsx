@@ -1,5 +1,5 @@
 
-import React, {useEffect, useState, useReducer, useMemo} from 'react';    
+import React, {useEffect, useState, useReducer, useMemo, useRef} from 'react';    
 //import { ButtonStyled } from '../styled/BottonStyled';
 import { ContainerStyled } from '../styled/ContainerStyled';
 import { DivStyled } from '../styled/DivStyled';
@@ -26,6 +26,7 @@ const Characters = () => {
 const [characters, setCharacters]= useState([]);
 const [favorites, dispatch]= useReducer(favoriteReducer, initialState);
 const [search, setSearch]= useState('');
+const searchInput = useRef(null)
     useEffect(()=> {
    
      fetch('https://rickandmortyapi.com/api/character/?page=19') 
@@ -39,8 +40,8 @@ const [search, setSearch]= useState('');
         dispatch ({type: 'ADD_TO_FAVORITE', payload: favorite })
       }
     //obtenemos el valor de un input
-      const handleSearch=(event) => {
-      setSearch(event.target.value)
+      const handleSearch=() => {
+      setSearch(searchInput.current.value);
       }
       //filtramos los nombres garactizando que esten en minusculas
   /*   const filteredUsers = characters.filter((user)=>{
@@ -64,9 +65,10 @@ const [search, setSearch]= useState('');
 
 ))}
 <div className="Search">
-<input placeHolder ="Type to search ..." type="text" className="text" value={search} onChange={handleSearch}/>
+  <input placeHolder ="Type to search ..." type="text" className="text" value={search} ref={searchInput} onChange={handleSearch}/>
 </div>
      {filteredUsers.map(character=> ( 
+
      <div className="item" key ={character.id}>
        <DivStyled>
        <NameStyled>  {character.name}  </NameStyled>  
