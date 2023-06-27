@@ -1,11 +1,12 @@
 
-import React, {useEffect, useState, useReducer, useMemo, useRef} from 'react';    
+import React, {useEffect, useState, useReducer, useMemo, useRef, useCallback} from 'react';    
 //import { ButtonStyled } from '../styled/BottonStyled';
 import { ContainerStyled } from '../styled/ContainerStyled';
 import { DivStyled } from '../styled/DivStyled';
 import { NameStyled } from '../styled/NameStyled';
 import { GenderStyled } from '../styled/GenderStyled';
 import { ButtonFavStyled } from '../styled/ButtonFavStyled';
+import Search from './Search';
 
 const initialState = {
   favorites:[]
@@ -40,15 +41,22 @@ const searchInput = useRef(null)
         dispatch ({type: 'ADD_TO_FAVORITE', payload: favorite })
       }
     //obtenemos el valor de un input
-      const handleSearch=() => {
+      // const handleSearch=() => {
+      // setSearch(searchInput.current.value);
+      // }  
+      const handleSearch= useCallback(()=>{
       setSearch(searchInput.current.value);
-      }
+    },[] )
       //filtramos los nombres garactizando que esten en minusculas
   /*   const filteredUsers = characters.filter((user)=>{
       return user.name.toLowerCase().includes(search.toLowerCase());
     }) */
-    const filteredUsers = useMemo(() => 
- characters.filter((user) => {
+    
+  
+
+        const filteredUsers = useMemo(() => 
+       characters.filter((user) => {
+    
    return user.name.toLowerCase().includes(search.toLowerCase());
      }),
      [characters, search]
@@ -64,11 +72,9 @@ const searchInput = useRef(null)
 </li>
 
 ))}
-<div className="Search">
-  <input placeHolder ="Type to search ..." type="text" className="text" value={search} ref={searchInput} onChange={handleSearch}/>
-</div>
-     {filteredUsers.map(character=> ( 
+<Search search ={search} searchInput ={searchInput} handleSearch ={handleSearch}/>
 
+     {filteredUsers.map(character=> ( 
      <div className="item" key ={character.id}>
        <DivStyled>
        <NameStyled>  {character.name}  </NameStyled>  
@@ -85,4 +91,3 @@ const searchInput = useRef(null)
   );
 }
 export default Characters;
-
