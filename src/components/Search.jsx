@@ -1,12 +1,19 @@
 import React from 'react';
-    const Search = ({search, searchInput, handleSearch }) => {
-return (
-  
-      <div className="Search">
-  <input placeHolder ="Type to search ..." type="text" className="text" value={search} ref={searchInput} onChange={handleSearch}/>
-</div>
+import { SearchContainer, SearchInput } from '../styled/SearchInput';
 
+const Search = ({ search, searchInput, handleSearch }) => {
+  return (
+    <SearchContainer className="Search">
+      <SearchInput
+        placeholder="Type to search ..."
+        type="text"
+        className="text"
+        value={search}
+        ref={searchInput}
+        onChange={handleSearch}
+      />
+    </SearchContainer>
   );
-}
+};
 
-export default Search
+export default Search;

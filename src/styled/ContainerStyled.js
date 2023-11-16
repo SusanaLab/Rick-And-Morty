@@ -1,12 +1,16 @@
 import styled from "styled-components";
-export const ContainerStyled= styled.div`
-background: #01373C;
-display: flex;
-flex-wrap: wrap;
-cursor: pointer;
-fint-size: 1em;
-margin:1e;
-padding: 4px 12px;
-border: 1px solid #09f;
+import fondo from "../Assets/fondo.jpg";
 
-`
+export const ContainerStyled = styled.div`
+  background: url(${fondo});
+  background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo el espacio */
+  background-repeat: no-repeat;
+  with:100%; /* Evita que la imagen se repita */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; 
+  align-items: center;
+  cursor: pointer;
+  font-size: 1em; /* Corregido el error tipográfico: fint-size a font-size */
+padding:20px;
+`;

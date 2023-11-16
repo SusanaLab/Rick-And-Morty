@@ -1,19 +1,28 @@
 import React, {useState, useContext} from 'react';
 import ThemeContext from '../context/ThemeContext.js';
-import { ButtonFavStyled } from '../styled/ButtonFavStyled.js';
-
+import backgroundImage from '../Assets/header.jpg';
 const Header = () => {
-    const [darkMode, setDarkMode]= useState(false);
-    const color = useContext(ThemeContext);
-    const handleClick = () => {
-        setDarkMode(!darkMode);
-    }
+
+const headerStyle = {
+  display: 'flex',
+  width: '100%',
+  height: '300px',
+  position: 'relative', 
+};
+
+const imgStyle = {
+  width: '100%',
+  height: '100%',
+  objectFit: 'cover',
+  position: 'absolute', 
+  top: 0,
+  left: 0,
+};
+
   return (
-    <div className="header">
-      <div>
-      <h1 style ={{ color }}>Rick and morty </h1>    
-      </div>
-      <ButtonFavStyled type ="button" onClick={handleClick}>{darkMode ? 'Rick': 'Morty'} </ButtonFavStyled>
+    <div className="header"  style={headerStyle}>
+    <img src={backgroundImage} alt="Background" style={imgStyle} />
+     
    </div>
   );
 
