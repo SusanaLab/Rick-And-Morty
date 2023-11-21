@@ -12,5 +12,5 @@ export const ContainerStyled = styled.div`
   align-items: center;
   cursor: pointer;
   font-size: 1em; /* Corregido el error tipográfico: fint-size a font-size */
-padding:20px;
+  padding:20px;
 `;

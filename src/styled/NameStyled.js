@@ -9,6 +9,4 @@ font-style: normal;
 font-weight: 800;
 font-size: 18px;
 color: #001638;
-
-
 `
