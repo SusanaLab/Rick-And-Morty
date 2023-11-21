@@ -3,7 +3,6 @@ import React, { useEffect, useState, useReducer, useMemo, useRef, useCallback } 
 //import { ButtonStyled } from '../styled/BottonStyled';
 import { ContainerStyled } from '../styled/ContainerStyled';
 import { DivStyled } from '../styled/DivStyled';
-import { ButtonFavStyled } from '../styled/ButtonFavStyled';
 import Search from './Search';
 import { ImageStyled } from '../styled/ImageStyled';
 import { DivConatainer, H1Styled, H2Styled } from '../styled/DivContainer';
@@ -40,6 +39,7 @@ const Characters = () => {
 
   const handleClick = favorite => {
     dispatch({ type: 'ADD_TO_FAVORITE', payload: favorite })
+    
   }
   //obtenemos el valor de un input
   // const handleSearch=() => {
@@ -64,13 +64,12 @@ const Characters = () => {
   )
 
   return (<>  <Search search={search} searchInput={searchInput} handleSearch={handleSearch} />
+  <h1 style={{ color: '#41D2FF' }}>Favorite Characters</h1>
 
-<h1> Favorite Characters </h1>
-<ContainerStyled>
-    {favorites.favorites.map(favorite => (
-
- <DivConatainer color="#FFFFFF" key="{favorite.id}" >
-
+    <ContainerStyled>
+      {favorites.favorites.map(favorite => (
+        <DivConatainer color="#FFFFFF" key="{favorite.id}" >
+        
           <ImageStyled src={favorite.image} alt={favorite.name} />
           <DivFavorite>
             <H1Styled>  {favorite.name}  </H1Styled>
@@ -79,25 +78,21 @@ const Characters = () => {
             <H2Styled>  {favorite.species}  </H2Styled>
           </DivFavorite>
         </DivConatainer>
-     
-
-    ))}
+      ))}
     </ContainerStyled>
     <ContainerStyled className="Characters">
 
-
-
-
       {filteredUsers.map(character => (
         <DivConatainer className="item" key={character.id}>
-
+  
           <ImageStyled src={character.image} alt={character.name} />
           <DivStyled>
             <H1Styled>  {character.name}  </H1Styled>
             <H2Styled>  {character.status}  </H2Styled>
             <H2Styled>  {character.gender}  </H2Styled>
             <H2Styled>  {character.species}  </H2Styled>
-            <ButtonFavStyled type="button" onClick={() => handleClick(character)}> Favorite </ButtonFavStyled>
+                    <i type="button" onClick={() => handleClick(character)} class="fas fa-heart" ></i>
+       {/*      <ButtonFavStyled type="button" onClick={() => handleClick(character)}> Favorite </ButtonFavStyled> */}
           </DivStyled>
         </DivConatainer>
 

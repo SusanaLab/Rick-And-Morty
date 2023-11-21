@@ -11,10 +11,22 @@ export const DivConatainer = styled.div`
 
 
 export const H1Styled = styled.h1`
-  font-size: 17px; /* Ajusta el tamaño de la fuente según tus necesidades */
+  font-size: 16px; 
+  font-style: normal;
+font-weight: 900;
+line-height: normal;
+letter-spacing: 0.96px;
+padding:2px;
+margin: 2px;
 `;
 
 export const H2Styled = styled.h2`
-  font-size: 15px; /* Ajusta el tamaño de la fuente según tus necesidades */
+  font-size: 14px; 
+  font-style: normal;
+font-weight: 900;
+line-height: normal;
+letter-spacing: 0.96px;
+padding:2px;
+margin: 2px;
 `;
 
